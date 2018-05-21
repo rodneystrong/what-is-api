@@ -1,3 +1,10 @@
+const app = document.getElementById('root');
+
+const container = document.createElement('div');
+container.setAttribute('class', 'container');
+
+app.appendChild(container);
+
 //create a request var and assign a new XMLHttpRequest obj to it.
 var request = new XMLHttpRequest();
 
@@ -11,8 +18,17 @@ request.onload = function () {
   if (request.status >= 200 && request.status < 400) {
     data.forEach(movie => {
       console.log(movie.title);
-      console.log(movie.director);
-      console.log(movie.release_date);
+      //container element
+      const card = document.createElement('div');
+      card.setAttribute('class', 'card');
+
+      //actual element holding content
+      const h1 = document.createElement('h1');
+      h1.textContent = movie.title;
+
+      //put the element inside our container var
+      container.appendChild(card);
+      card.appendChild(h1);
     });
   } else {
     console.log('error');
