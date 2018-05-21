@@ -8,9 +8,16 @@ request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
 request.onload = function () {
   var data = JSON.parse(this.response);
 
-  data.forEach(movie => {
-    console.log(movie.title);
-  });
+  if (request.status >= 200 && request.status < 400) {
+    data.forEach(movie => {
+      console.log(movie.title);
+      console.log(movie.director);
+      console.log(movie.release_date);
+    });
+  } else {
+    console.log('error');
+  }
+
 }
 
 //once done, send the request using send()
