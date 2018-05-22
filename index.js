@@ -43,18 +43,18 @@ fetch('https://ghibliapi.herokuapp.com/films')
     console.log(response);
     return response.json();
   })
-  .then(function (myJson) {
-    console.log(myJson[0].title);
-    myJson.map(movie => {
+  .then(function (movies) {
+    console.log(movies[0].title);
+    movies.map(movie => {
       console.log(movie.title);
       const card = document.createElement('div');
       card.setAttribute('class', 'card');
 
-      const h1 = document.createElement('h1');
-      h1.textContent = movie.title;
+      const h2 = document.createElement('h2');
+      h2.textContent = movie.title;
 
       container.appendChild(card);
-      card.appendChild(h1);
+      card.appendChild(h2);
     });
   });
 
