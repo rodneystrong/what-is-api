@@ -6,10 +6,10 @@ container.setAttribute('class', 'container');
 app.appendChild(container);
 
 //create a request var and assign a new XMLHttpRequest obj to it.
-var request = new XMLHttpRequest();
+// var request = new XMLHttpRequest();
 
 //open connection with open() and use 'GET'
-request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+// request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
 
 //use onload() to access the JSON data 
 // request.onload = function () {
@@ -40,14 +40,23 @@ request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
 fetch('https://ghibliapi.herokuapp.com/films')
   .then(function (response) {
     console.log(response.status);
+    console.log(response);
     return response.json();
   })
   .then(function (myJson) {
     console.log(myJson[0].title);
     myJson.map(movie => {
       console.log(movie.title);
-    })
+      const card = document.createElement('div');
+      card.setAttribute('class', 'card');
+
+      const h1 = document.createElement('h1');
+      h1.textContent = movie.title;
+
+      container.appendChild(card);
+      card.appendChild(h1);
+    });
   });
 
 //once done, send the request using send()
-request.send();
+// request.send();
