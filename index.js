@@ -39,10 +39,14 @@ request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
 //using the fetch API
 fetch('https://ghibliapi.herokuapp.com/films')
   .then(function (response) {
+    console.log(response.status);
     return response.json();
   })
   .then(function (myJson) {
     console.log(myJson[0].title);
+    myJson.map(movie => {
+      console.log(movie.title);
+    })
   });
 
 //once done, send the request using send()
